@@ -1,0 +1,39 @@
+{
+  "env": {
+    "development": {
+      "plugins": [
+        [
+          "babel-plugin-styled-components",
+          {
+            "minify": false
+          }
+        ],
+        [
+          "@babel/plugin-proposal-class-properties",
+          {
+            "loose": true
+          }
+        ],
+        "@babel/plugin-transform-destructuring"
+      ]
+    },
+    "production": {
+      "plugins": [
+        [
+          "babel-plugin-styled-components",
+          {
+            "fileName": false,
+            "displayName": false
+          }
+        ],
+        [
+          "@babel/plugin-proposal-class-properties",
+          {
+            "loose": true
+          }
+        ],
+        "@babel/plugin-transform-destructuring"
+      ]
+    }
+  }
+}
