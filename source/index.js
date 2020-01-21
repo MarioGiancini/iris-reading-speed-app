@@ -1,5 +1,8 @@
-import styles from './main.scss';
+import React from 'react';
+import ReactDOM from 'react-dom';
 
-console.log(styles);
+import 'styles/index.scss';
 
-console.log('IrisReading speed reading application');
+import { Application } from './Application';
+
+ReactDOM.render(<Application />, document.getElementById('application'));
