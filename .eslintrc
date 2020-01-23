@@ -61,6 +61,7 @@
       "error",
       "all"
     ],
+    "arrow-parens": "off",
     "object-curly-newline": "off",
     "react/require-default-props": "off",
     "no-unused-expressions": "off",
