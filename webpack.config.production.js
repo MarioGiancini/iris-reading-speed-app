@@ -78,6 +78,17 @@ module.exports = {
         test: /\.(png|jpg)/,
         loader: 'file-loader?name=images/[name].[ext]',
       },
+      {
+        test: /\.md/,
+        use: [
+          {
+            loader: 'html-loader',
+          },
+          {
+            loader: 'markdown-loader',
+          },
+        ],
+      },
     ],
   },
 
@@ -85,19 +96,12 @@ module.exports = {
     modules: ['node_modules'],
     descriptionFiles: ['package.json'],
     alias: {
-      api: path.resolve(__dirname, 'source/api'),
-      utils: path.resolve(__dirname, 'source/utils'),
-      Pages: path.resolve(__dirname, 'source/pages'),
-      Models: path.resolve(__dirname, 'source/models'),
-      Constants: path.resolve(__dirname, 'source/constants'),
       Components: path.resolve(__dirname, 'source/components'),
-      Containers: path.resolve(__dirname, 'source/containers'),
 
       store: path.resolve(__dirname, 'source/store'),
       styles: path.resolve(__dirname, 'source/styles'),
       images: path.resolve(__dirname, 'source/images'),
-      services: path.resolve(__dirname, 'source/services'),
-      utilities: path.resolve(__dirname, 'source/utilities'),
+      articles: path.resolve(__dirname, 'source/articles'),
     },
     mainFields: ['browser', 'main', 'module'],
     extensions: ['*', '.js', '.jsx', '.json'],
