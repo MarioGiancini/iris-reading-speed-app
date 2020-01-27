@@ -15,7 +15,8 @@ const finishReadingTest = (wordsCount) => (dispatch, getState) => {
   const { app } = getState();
   const { startTime, finishTime } = app;
   const readingSpeed = getReadingSpeed(startTime, finishTime, wordsCount);
-  dispatch(push(`/results/${readingSpeed}`));
+  const roundedReadingSpeed = Math.round(readingSpeed);
+  dispatch(push(`/results/${roundedReadingSpeed}`));
 };
 
 export {

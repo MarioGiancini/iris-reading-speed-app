@@ -12,7 +12,7 @@ const ReadingScore = ({ readingSpeed }) => (
     <Heading>Your reading score is:</Heading>
 
     <WordsPerMinute>
-      <strong>{Math.round(readingSpeed)}</strong> words per minute
+      <strong>{readingSpeed}</strong> words per minute
     </WordsPerMinute>
   </Container>
 );
