@@ -1,9 +1,10 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { Provider } from 'react-redux';
+import { ConnectedRouter } from 'connected-react-router';
 import { FocusStyleManager } from '@blueprintjs/core';
 
-import { store } from 'store';
+import { store, history } from 'store';
 
 import 'styles/index.scss';
 
@@ -13,7 +14,9 @@ FocusStyleManager.onlyShowFocusOnTabs();
 
 ReactDOM.render(
   <Provider store={store}>
-    <Application />
+    <ConnectedRouter history={history}>
+      <Application />
+    </ConnectedRouter>
   </Provider>,
   document.getElementById('application'),
 );

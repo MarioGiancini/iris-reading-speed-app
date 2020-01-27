@@ -96,6 +96,7 @@ module.exports = {
     modules: ['node_modules'],
     descriptionFiles: ['package.json'],
     alias: {
+      Pages: path.resolve(__dirname, 'source/pages'),
       Components: path.resolve(__dirname, 'source/components'),
 
       store: path.resolve(__dirname, 'source/store'),
