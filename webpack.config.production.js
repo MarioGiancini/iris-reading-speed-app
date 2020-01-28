@@ -16,7 +16,7 @@ module.exports = {
 
   output: {
     filename: 'static/[name].[hash:8].bundle.js',
-    path: path.resolve(__dirname, 'dist'),
+    path: path.resolve(__dirname, 'public'),
     publicPath: '/',
   },
 
@@ -116,7 +116,7 @@ module.exports = {
     new HtmlWebpackPlugin({
       inject: true,
       title: 'IrisReading Reading Speed Application',
-      template: './public/index.html',
+      template: './source/templates/index.html',
     }),
     new MiniCssExtractPlugin({
       filename: 'static/[hash].bundle.css',

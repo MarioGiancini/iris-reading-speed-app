@@ -1,11 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import {
-  Container,
-  Heading,
-  WordsPerMinute,
-} from './ReadingScore.Components';
+import { ReadingSpeedChart } from 'Components';
+import { Container, Heading, WordsPerMinute } from './ReadingScore.Components';
 
 const ReadingScore = ({ readingSpeed }) => (
   <Container>
@@ -14,6 +11,8 @@ const ReadingScore = ({ readingSpeed }) => (
     <WordsPerMinute>
       <strong>{readingSpeed}</strong> words per minute
     </WordsPerMinute>
+
+    <ReadingSpeedChart />
   </Container>
 );
 

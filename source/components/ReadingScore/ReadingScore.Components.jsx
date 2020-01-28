@@ -4,6 +4,7 @@ const Container = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
+  font-family: Nunito;
 `;
 
 const Heading = styled.h3`
