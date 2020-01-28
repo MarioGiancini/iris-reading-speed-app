@@ -87,7 +87,7 @@ const ReadingScore = ({ readingSpeed }) => {
               type="number"
               dataKey="readingSpeed"
               tickLine={false}
-              ticks={[0, 100, 200, 250, 300, 400, 500]}
+              ticks={[100, 200, 250, 300, 400]}
               domain={['dataMin', 'dataMax']}
             />
 
