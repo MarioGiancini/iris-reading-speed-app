@@ -24,7 +24,7 @@ import {
 const SocialShareURL = 'reading-speed-application.now.sh';
 
 const getSocialShareTitle = (readingSpeed) => (
-  `My score is ${readingSpeed} words per minute`
+  `I just read ${readingSpeed} wpm. Check out this site to test your reading speed - https://${SocialShareURL}`
 );
 
 const ReadingScore = ({ readingSpeed }) => {
@@ -59,7 +59,7 @@ const ReadingScore = ({ readingSpeed }) => {
         <FacebookShareButton
           url={SocialShareURL}
           quote={getSocialShareTitle(readingSpeed)}
-          hashtag="#irisreading"
+          hashtag="#speedreading"
         >
           <FacebookIcon round size={32} />
         </FacebookShareButton>
@@ -74,7 +74,7 @@ const ReadingScore = ({ readingSpeed }) => {
         <TwitterShareButton
           url={SocialShareURL}
           title={getSocialShareTitle(readingSpeed)}
-          hashtags={['irisreading']}
+          hashtags={['speedreading']}
         >
           <TwitterIcon round size={32} />
         </TwitterShareButton>
