@@ -14,6 +14,10 @@ const Container = styled.div`
   padding: 50px;
   background-image: url(${BackgroundPattern});
   overflow: hidden;
+
+  @media screen and (max-width: 414px) {
+    padding: 20px;
+  }
 `;
 
 const ControlContainer = styled(Card).attrs({
@@ -66,6 +70,10 @@ const StartTestButton = styled(ButtonBase)``;
 
 const FinishTestButton = styled(ButtonBase)`
   margin-top: 30px;
+
+  @media screen and (max-width: 414px) {
+    margin-top: 20px;
+  }
 `;
 
 export {
