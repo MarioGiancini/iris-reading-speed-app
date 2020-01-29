@@ -4,7 +4,7 @@ export const Container = styled.div`
   max-height: 100%;
   max-width: 1000px;
   padding: 20px;
-  border-radius: 10px;
+  border-radius: 4px;
   background: rgb(248, 248, 249);
   font-size: 22px;
   font-family: Nunito;
@@ -16,4 +16,12 @@ export const Container = styled.div`
     filter: blur(4px);
     pointer-events: none;
   `}
+
+  @media screen and (max-width: 414px) {
+    font-size: 18px;
+
+    h2 {
+      font-size: 22px;
+    }
+  }
 `;
