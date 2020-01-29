@@ -2,6 +2,15 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import AnimatedNumber from 'react-animated-number';
 
+import {
+  FacebookIcon,
+  LinkedinIcon,
+  TwitterIcon,
+  FacebookShareButton,
+  LinkedinShareButton,
+  TwitterShareButton,
+} from 'react-share';
+
 import { ReadingSpeedChart } from 'Components';
 
 import {
@@ -9,7 +18,14 @@ import {
   Heading,
   WordsPerMinuteNumber,
   WordsPerMinuteDescription,
+  SocialShareButtons,
 } from './ReadingScore.Components';
+
+const SocialShareURL = 'reading-speed-application.now.sh';
+
+const getSocialShareTitle = (readingSpeed) => (
+  `My score is ${readingSpeed} words per minute`
+);
 
 const ReadingScore = ({ readingSpeed }) => {
   const [animatedValue, setAnimatedValue] = React.useState(0);
@@ -38,6 +54,31 @@ const ReadingScore = ({ readingSpeed }) => {
       </WordsPerMinuteDescription>
 
       <ReadingSpeedChart readingSpeed={readingSpeed} />
+
+      <SocialShareButtons>
+        <FacebookShareButton
+          url={SocialShareURL}
+          quote={getSocialShareTitle(readingSpeed)}
+          hashtag="#irisreading"
+        >
+          <FacebookIcon round size={32} />
+        </FacebookShareButton>
+
+        <LinkedinShareButton
+          url={SocialShareURL}
+          title={getSocialShareTitle(readingSpeed)}
+        >
+          <LinkedinIcon round size={32} />
+        </LinkedinShareButton>
+
+        <TwitterShareButton
+          url={SocialShareURL}
+          title={getSocialShareTitle(readingSpeed)}
+          hashtags={['irisreading']}
+        >
+          <TwitterIcon round size={32} />
+        </TwitterShareButton>
+      </SocialShareButtons>
     </Container>
   );
 };
