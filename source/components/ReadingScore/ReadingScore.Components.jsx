@@ -8,15 +8,24 @@ const Container = styled.div`
 `;
 
 const Heading = styled.h3`
+  margin-bottom: 10px;
   font-size: 24px;
 `;
 
-const WordsPerMinute = styled.p`
+const WordsPerMinuteNumber = styled.p`
+  font-size: 42px;
+  font-weight: bold;
+`;
+
+const WordsPerMinuteDescription = styled.p`
   font-size: 18px;
+  font-weight: bold;
+  text-align: center;
 `;
 
 export {
   Container,
   Heading,
-  WordsPerMinute,
+  WordsPerMinuteNumber,
+  WordsPerMinuteDescription,
 };
