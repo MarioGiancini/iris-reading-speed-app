@@ -1,6 +1,8 @@
-import firebase from 'firebase';
-// eslint-disable-next-line import/no-extraneous-dependencies
+import firebase from 'firebase/app';
+/* eslint-disable import/no-extraneous-dependencies */
+import '@firebase/auth';
 import '@firebase/firestore';
+/* eslint-enable import/no-extraneous-dependencies */
 
 const configuration = {
   apiKey: 'AIzaSyCPgTpX8j8WDuJy92trCGaBvrEwgXn3LRU',
@@ -16,6 +18,11 @@ firebase.initializeApp(configuration);
 
 const database = firebase.firestore();
 
+const signout = () => {
+  firebase.auth().signOut();
+  window.location.href = '/';
+};
+
 const sendResults = (readingSpeed) => {
   database.collection('results').add({
     readingSpeed,
@@ -23,4 +30,19 @@ const sendResults = (readingSpeed) => {
   });
 };
 
-export { sendResults };
+const fetchResults = async () => {
+  const result = [];
+  const response = await database.collection('results').get();
+
+  response.forEach(entry => {
+    result.push(entry.data());
+  });
+
+  return result;
+};
+
+export {
+  signout,
+  sendResults,
+  fetchResults,
+};

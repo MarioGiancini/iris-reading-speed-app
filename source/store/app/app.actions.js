@@ -11,6 +11,10 @@ const getReadingSpeed = (startTime, finishTime, wordsCount) => {
   return wordsCount / timeInMinutes;
 };
 
+const signout = () => {
+  api.signout();
+};
+
 const finishReadingTest = (wordsCount) => (dispatch, getState) => {
   dispatch(finishReadingTestSuccess());
 
@@ -26,6 +30,7 @@ const sendReadingSpeedResultToServer = (readingSpeed) => () => {
 };
 
 export {
+  signout,
   startReadingTest,
   finishReadingTest,
   finishReadingTestSuccess,

@@ -10,6 +10,9 @@ const ResultsPageContainer = ({ match, sendReadingSpeedResultToServer }) => {
   const readingSpeed = Number(readingSpeedString);
 
   React.useEffect(() => {
+    // navigator.geolocation.getCurrentPosition((position) => {
+    //   console.log(position);
+    // });
     sendReadingSpeedResultToServer(readingSpeed);
   }, []);
 

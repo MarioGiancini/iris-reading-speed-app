@@ -5,7 +5,7 @@ import { Intent } from '@blueprintjs/core';
 
 import { getRandomArticle } from 'articles';
 
-import { ResultsPage } from 'Pages';
+import { AdminPage, SigninPage, ResultsPage } from 'Pages';
 import { Article } from 'Components';
 
 import {
@@ -38,15 +38,13 @@ const Application = ({ isTestStarted, isTestFinished, onTestStart, onTestFinish 
     <Container>
       <Switch>
         <Route path="/" exact>
-          {
-            isTestFinished === false &&
+          {isTestFinished === false && (
             <Article disabled={isTestStarted === false}>
               <div ref={articleRef} dangerouslySetInnerHTML={{ __html: ArticleContent }} />
             </Article>
-          }
+          )}
 
-          {
-            isTestStarted === false &&
+          {isTestStarted === false && (
             <ControlContainer>
               <IntroText>
                 <IntroTextHeading>
@@ -66,17 +64,19 @@ const Application = ({ isTestStarted, isTestFinished, onTestStart, onTestFinish 
                 Start test
               </StartTestButton>
             </ControlContainer>
-          }
+          )}
 
-          {
-            isTestStarted && isTestFinished === false &&
+          {isTestStarted && isTestFinished === false && (
             <FinishTestButton intent={Intent.SUCCESS} onClick={() => onTestFinish(wordsCount)}>
               Finish test
             </FinishTestButton>
-          }
+          )}
         </Route>
 
         <Route path="/results/:readingSpeed" component={ResultsPage} />
+
+        <Route exact path="/signin" component={SigninPage} />
+        <Route exact path="/admin" component={AdminPage} />
       </Switch>
     </Container>
   );

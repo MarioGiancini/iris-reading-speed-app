@@ -7,10 +7,12 @@ import { compose, createStore, combineReducers, applyMiddleware } from 'redux';
 
 /* #region reducers */
 import appReducer from './app/app.reducer';
+import resultsReducer from './results/results.reducer';
 /* #endregion */
 
 /* #region actions */
 import * as appActions from './app/app.actions';
+import * as resultsActions from './results/results.actions';
 /* #endregion */
 
 const browserHistory = createBrowserHistory();
@@ -19,10 +21,12 @@ const isDevelopmentMode = process.env.NODE_ENV === 'development';
 const createRootReducer = history => combineReducers({
   router: connectRouter(history),
   app: appReducer,
+  results: resultsReducer,
 });
 
 const actions = {
   app: appActions,
+  results: resultsActions,
 };
 
 const store = createStore(createRootReducer(browserHistory), compose(
