@@ -1,6 +1,8 @@
 import { createAction } from 'redux-act';
 import { push } from 'connected-react-router';
 
+import * as api from 'api';
+
 const startReadingTest = createAction('[app] start reading test');
 const finishReadingTestSuccess = createAction('[app] finish reading test');
 
@@ -19,8 +21,13 @@ const finishReadingTest = (wordsCount) => (dispatch, getState) => {
   dispatch(push(`/results/${roundedReadingSpeed}`));
 };
 
+const sendReadingSpeedResultToServer = (readingSpeed) => () => {
+  api.sendResults(readingSpeed);
+};
+
 export {
   startReadingTest,
   finishReadingTest,
   finishReadingTestSuccess,
+  sendReadingSpeedResultToServer,
 };

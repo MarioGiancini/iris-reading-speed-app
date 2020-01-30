@@ -1,1 +1,1 @@
-export { ResultsPage } from './ResultsPage/ResultsPage';
+export { ResultsPage } from './ResultsPage/ResultsPage.Container';

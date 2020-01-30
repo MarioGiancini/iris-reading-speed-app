@@ -109,6 +109,7 @@ module.exports = {
       Pages: path.resolve(__dirname, 'source/pages'),
       Components: path.resolve(__dirname, 'source/components'),
 
+      api: path.resolve(__dirname, 'source/api'),
       store: path.resolve(__dirname, 'source/store'),
       styles: path.resolve(__dirname, 'source/styles'),
       images: path.resolve(__dirname, 'source/images'),

@@ -146,4 +146,5 @@ ReadingSpeedChart.propTypes = {
   readingSpeed: PropTypes.number.isRequired,
 };
 
-export { ReadingSpeedChart };
+const ReadingSpeedChartMemoized = React.memo(ReadingSpeedChart);
+export { ReadingSpeedChartMemoized as ReadingSpeedChart };

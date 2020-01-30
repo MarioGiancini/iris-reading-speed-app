@@ -1,16 +1,14 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
 import { ReadingScore } from 'Components';
 
-const ResultsPage = ({ match }) => {
-  const { readingSpeed: readingSpeedString } = match.params;
-  const readingSpeed = Number(readingSpeedString);
+const ResultsPage = ({ readingSpeed }) => (
+  <ReadingScore readingSpeed={readingSpeed} />
+);
 
-  return (
-    <div>
-      <ReadingScore readingSpeed={readingSpeed} />
-    </div>
-  );
+ResultsPage.propTypes = {
+  readingSpeed: PropTypes.number.isRequired,
 };
 
 export { ResultsPage };
