@@ -1,11 +1,17 @@
+import firebase from 'firebase/app';
+
 import { database } from './base';
 
-const sendResults = (readingSpeed) => {
+const sendResults = (readingSpeed) => (
   database.collection('results').add({
     readingSpeed,
-    date: new Date(),
-  });
-};
+    timestamp: firebase.firestore.Timestamp.fromDate(new Date()),
+  })
+);
+
+const setResultsLocation = (results, location) => (
+  results.update({ location })
+);
 
 const fetchResultsList = async () => {
   const result = [];
@@ -16,7 +22,7 @@ const fetchResultsList = async () => {
 
     result.push({
       value: data.readingSpeed,
-      date: new Date(data.date.seconds * 1000),
+      date: new Date(data.timestamp.seconds * 1000),
     });
   });
 
@@ -25,5 +31,6 @@ const fetchResultsList = async () => {
 
 export {
   sendResults,
+  setResultsLocation,
   fetchResultsList,
 };
