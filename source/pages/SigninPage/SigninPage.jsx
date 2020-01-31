@@ -1,31 +1,52 @@
 import React from 'react';
-import firebase from 'firebase/app';
-import firebaseui from 'firebaseui';
-import styled from 'styled-components';
+import PropTypes from 'prop-types';
+import { FormGroup, InputGroup } from '@blueprintjs/core';
 
-import 'firebaseui/dist/firebaseui.css';
+import { Container, SubmitButton } from './SigninPage.Components';
 
-const AuthContainer = styled.div`
-  width: 350px;
-`;
+const SigninPage = ({ onSignin }) => {
+  const [email, setEmail] = React.useState('');
+  const [password, setPassword] = React.useState('');
 
-const SigninPage = () => {
-  React.useEffect(() => {
-    const ui = new firebaseui.auth.AuthUI(firebase.auth());
-
-    ui.start('#firebaseui-auth-container', {
-      signInOptions: [
-        firebase.auth.EmailAuthProvider.PROVIDER_ID,
-      ],
-      signInSuccessUrl: '/admin',
-    });
-  }, []);
+  const handleSubmit = React.useCallback((event) => {
+    event.preventDefault();
+    onSignin({ email, password });
+  });
 
   return (
-    <>
-      <AuthContainer id="firebaseui-auth-container" />
-    </>
+    <Container>
+      <form onSubmit={handleSubmit}>
+        <FormGroup label="Email">
+          <InputGroup
+            autoFocus
+            type="text"
+            value={email}
+            onChange={(event) => {
+              setEmail(event.target.value);
+            }}
+          />
+        </FormGroup>
+
+        <FormGroup label="Password">
+          <InputGroup
+            type="password"
+            value={password}
+            onChange={(event) => {
+              setPassword(event.target.value);
+            }}
+          />
+        </FormGroup>
+
+        <SubmitButton type="submit">
+          Sign in
+        </SubmitButton>
+      </form>
+    </Container>
   );
+};
+
+SigninPage.propTypes = {
+  onSignin: PropTypes.func.isRequired,
 };
 
 export { SigninPage };
