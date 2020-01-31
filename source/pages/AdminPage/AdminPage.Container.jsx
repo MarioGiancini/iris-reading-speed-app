@@ -5,19 +5,23 @@ import { actions } from 'store';
 
 import { AdminPage } from './AdminPage';
 
-const AdminPageContainer = ({ signout, fetchResults }) => {
+const AdminPageContainer = ({ results, signout, fetchResultsList }) => {
   React.useEffect(() => {
-    fetchResults();
+    fetchResultsList();
   }, []);
 
   return (
-    <AdminPage onSignout={signout} />
+    <AdminPage results={results} onSignout={signout} />
   );
 };
 
+const mapStateToProps = ({ results }) => ({
+  results: results.list,
+});
+
 const ConnectedAdminPageContainer = connect(
-  null,
-  { ...actions.app, ...actions.results },
+  mapStateToProps,
+  { ...actions.auth, ...actions.results },
 )(AdminPageContainer);
 
 export { ConnectedAdminPageContainer as AdminPageContainer };

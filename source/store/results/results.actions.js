@@ -1,15 +1,5 @@
-import { createAction } from 'redux-act';
+import { createActionWithStatuses } from 'utilities/store';
 
-import * as api from 'api';
+const fetchResultsList = createActionWithStatuses('[results] fetch results list');
 
-const fetchResultsSuccess = createAction('[results] fetch results success');
-
-const fetchResults = () => async (dispatch) => {
-  const results = await api.fetchResults();
-  dispatch(fetchResultsSuccess(results));
-};
-
-export {
-  fetchResults,
-  fetchResultsSuccess,
-};
+export { fetchResultsList };

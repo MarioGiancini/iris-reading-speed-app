@@ -1,17 +1,12 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import styled from 'styled-components';
 import { Button, Navbar, Alignment } from '@blueprintjs/core';
 
-const Container = styled.div`
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100vw;
-  height: 100vh;
-`;
+import { ResultList } from 'Models/Results';
 
-const AdminPage = ({ onSignout }) => (
+import { Container, Content, Table } from './AdminPage.Components';
+
+const AdminPage = ({ results, onSignout }) => (
   <Container>
     <Navbar>
       <Navbar.Group align={Alignment.LEFT}>
@@ -22,10 +17,31 @@ const AdminPage = ({ onSignout }) => (
         <Button onClick={onSignout}>Sign out</Button>
       </Navbar.Group>
     </Navbar>
+
+    <Content>
+      <Table>
+        <thead>
+          <tr>
+            <th>Reading speed</th>
+            <th>Date</th>
+          </tr>
+        </thead>
+
+        <tbody>
+          {results.map((result, index) => (
+            <tr key={index}>
+              <td>{result.value}</td>
+              <td>{result.date.toLocaleDateString()} {result.date.toLocaleTimeString()}</td>
+            </tr>
+          ))}
+        </tbody>
+      </Table>
+    </Content>
   </Container>
 );
 
 AdminPage.propTypes = {
+  results: ResultList.isRequired,
   onSignout: PropTypes.func.isRequired,
 };
 

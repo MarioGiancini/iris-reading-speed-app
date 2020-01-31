@@ -67,7 +67,7 @@ const Application = ({ isTestStarted, isTestFinished, onTestStart, onTestFinish 
           )}
 
           {isTestStarted && isTestFinished === false && (
-            <FinishTestButton intent={Intent.SUCCESS} onClick={() => onTestFinish(wordsCount)}>
+            <FinishTestButton intent={Intent.SUCCESS} onClick={() => onTestFinish({ wordsCount })}>
               Finish test
             </FinishTestButton>
           )}

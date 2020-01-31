@@ -5,15 +5,12 @@ import { actions } from 'store';
 
 import { ResultsPage } from './ResultsPage';
 
-const ResultsPageContainer = ({ match, sendReadingSpeedResultToServer }) => {
+const ResultsPageContainer = ({ match, sendReadingScoreToServer }) => {
   const { readingSpeed: readingSpeedString } = match.params;
   const readingSpeed = Number(readingSpeedString);
 
   React.useEffect(() => {
-    // navigator.geolocation.getCurrentPosition((position) => {
-    //   console.log(position);
-    // });
-    sendReadingSpeedResultToServer(readingSpeed);
+    sendReadingScoreToServer(readingSpeed);
   }, []);
 
   return (
