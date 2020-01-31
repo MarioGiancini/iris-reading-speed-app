@@ -108,11 +108,14 @@ module.exports = {
     alias: {
       Pages: path.resolve(__dirname, 'source/pages'),
       Components: path.resolve(__dirname, 'source/components'),
+      Models: path.resolve(__dirname, 'source/models'),
 
+      api: path.resolve(__dirname, 'source/api'),
       store: path.resolve(__dirname, 'source/store'),
       styles: path.resolve(__dirname, 'source/styles'),
       images: path.resolve(__dirname, 'source/images'),
       articles: path.resolve(__dirname, 'source/articles'),
+      utilities: path.resolve(__dirname, 'source/utilities'),
     },
     mainFields: ['browser', 'main', 'module'],
     extensions: ['*', '.js', '.jsx', '.json'],

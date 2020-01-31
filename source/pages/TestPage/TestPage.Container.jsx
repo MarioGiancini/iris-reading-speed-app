@@ -4,15 +4,15 @@ import { connect } from 'react-redux';
 
 import { actions } from 'store';
 
-import { Application } from './Application';
+import { TestPage } from './TestPage';
 
-const ApplicationContainer = ({
+const TestPageContainer = ({
   isTestStarted,
   isTestFinished,
   startReadingTest,
   finishReadingTest,
 }) => (
-  <Application
+  <TestPage
     isTestStarted={isTestStarted}
     isTestFinished={isTestFinished}
     onTestStart={startReadingTest}
@@ -20,14 +20,14 @@ const ApplicationContainer = ({
   />
 );
 
-ApplicationContainer.propTypes = {
+TestPageContainer.propTypes = {
   isTestStarted: PropTypes.bool,
   isTestFinished: PropTypes.bool,
   startReadingTest: PropTypes.func,
   finishReadingTest: PropTypes.func,
 };
 
-ApplicationContainer.defaultProps = {
+TestPageContainer.defaultProps = {
   isTestStarted: false,
   isTestFinished: false,
 };
@@ -37,9 +37,9 @@ const mapStateToProps = ({ app }) => ({
   isTestFinished: Boolean(app.startTime && app.finishTime),
 });
 
-const ConnectedApplicationContainer = connect(
+const TestPageContainerConnected = connect(
   mapStateToProps,
   { ...actions.app },
-)(ApplicationContainer);
+)(TestPageContainer);
 
-export { ConnectedApplicationContainer as Application };
+export { TestPageContainerConnected as TestPageContainer };

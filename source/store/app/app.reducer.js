@@ -12,7 +12,7 @@ const reducer = {
     startTime: new Date(),
   }),
 
-  [actions.finishReadingTestSuccess]: state => ({
+  [actions.finishReadingTest.success]: state => ({
     ...state,
     finishTime: new Date(),
   }),
