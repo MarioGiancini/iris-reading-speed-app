@@ -6,6 +6,7 @@ import { getRandomArticle } from 'articles';
 import { Article } from 'Components';
 
 import {
+  Container,
   ControlContainer,
   IntroText,
   IntroTextHeading,
@@ -36,7 +37,7 @@ const TestPage = ({
   });
 
   return (
-    <>
+    <Container>
       {isTestFinished === false && (
         <Article disabled={isTestStarted === false}>
           <div ref={articleRef} dangerouslySetInnerHTML={{ __html: ArticleContent }} />
@@ -70,7 +71,7 @@ const TestPage = ({
           Finish test
         </FinishTestButton>
       )}
-    </>
+    </Container>
   );
 };
 

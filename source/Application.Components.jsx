@@ -5,19 +5,11 @@ import { ELEVATION_4 } from '@blueprintjs/core/lib/esm/common/classes';
 import BackgroundPattern from './images/background-pattern.png';
 
 const Container = styled.div`
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
   position: relative;
-  height: 100%;
-  padding: 50px;
+  width: 100vw;
+  height: 100vh;
   background-image: url(${BackgroundPattern});
   overflow: hidden;
-
-  @media screen and (max-width: 414px) {
-    padding: 20px;
-  }
 `;
 
 const ControlContainer = styled(Card).attrs({

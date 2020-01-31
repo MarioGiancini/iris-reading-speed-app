@@ -107,8 +107,8 @@ module.exports = {
     descriptionFiles: ['package.json'],
     alias: {
       Pages: path.resolve(__dirname, 'source/pages'),
-      Components: path.resolve(__dirname, 'source/components'),
       Models: path.resolve(__dirname, 'source/models'),
+      Components: path.resolve(__dirname, 'source/components'),
 
       api: path.resolve(__dirname, 'source/api'),
       store: path.resolve(__dirname, 'source/store'),
