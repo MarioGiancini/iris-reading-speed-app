@@ -6,7 +6,7 @@ import * as actions from './auth.actions';
 
 const signoutSaga = function* () {
   yield call(api.signout);
-  yield put(push('/'));
+  yield put(push('/signin'));
 };
 
 const authSaga = function* () {
