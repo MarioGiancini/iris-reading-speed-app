@@ -21,6 +21,7 @@ const Table = styled(HTMLTable).attrs({
   width: 100%;
   border-radius: 3px;
   background-color: white;
+  table-layout: fixed;
 `;
 
 export {

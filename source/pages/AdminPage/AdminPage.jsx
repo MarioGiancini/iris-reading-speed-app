@@ -4,6 +4,7 @@ import { Button, Navbar, Alignment } from '@blueprintjs/core';
 
 import { ResultList } from 'Models/Results';
 
+import { LocationLink } from 'Components';
 import { Container, Content, Table } from './AdminPage.Components';
 
 const AdminPage = ({ results, onSignout }) => (
@@ -22,8 +23,9 @@ const AdminPage = ({ results, onSignout }) => (
       <Table>
         <thead>
           <tr>
-            <th>Reading speed</th>
+            <th>Reading speed (words per minute)</th>
             <th>Date</th>
+            <th>Location</th>
           </tr>
         </thead>
 
@@ -32,6 +34,11 @@ const AdminPage = ({ results, onSignout }) => (
             <tr key={index}>
               <td>{result.value}</td>
               <td>{result.date.toLocaleDateString()} {result.date.toLocaleTimeString()}</td>
+              <td>
+                {result.location && (
+                  <LocationLink location={result.location} />
+                )}
+              </td>
             </tr>
           ))}
         </tbody>

@@ -15,14 +15,21 @@ const setResultsLocation = (results, location) => (
 
 const fetchResultsList = async () => {
   const result = [];
-  const response = await database.collection('results').get();
+  const response = await database
+    .collection('results')
+    .orderBy('timestamp', 'desc')
+    .get();
 
   response.forEach(entry => {
     const data = entry.data();
 
+    const { location } = data;
+    const { latitude, longitude } = location || {};
+
     result.push({
       value: data.readingSpeed,
       date: new Date(data.timestamp.seconds * 1000),
+      location: data.location && { latitude, longitude },
     });
   });
 
