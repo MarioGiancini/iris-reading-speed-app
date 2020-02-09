@@ -34,7 +34,7 @@ const TestPage = ({
 
     const articleContent = articleElement.textContent;
     setWordsCount(articleContent.trim().split(/\s+/).length);
-  });
+  }, []);
 
   return (
     <Container>

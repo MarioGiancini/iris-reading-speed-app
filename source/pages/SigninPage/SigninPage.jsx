@@ -11,7 +11,7 @@ const SigninPage = ({ onSignin }) => {
   const handleSubmit = React.useCallback((event) => {
     event.preventDefault();
     onSignin({ email, password });
-  });
+  }, [onSignin, email, password]);
 
   return (
     <Container>

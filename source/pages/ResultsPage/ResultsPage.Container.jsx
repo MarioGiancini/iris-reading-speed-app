@@ -11,7 +11,7 @@ const ResultsPageContainer = ({ match, sendReadingScoreToServer }) => {
 
   React.useEffect(() => {
     sendReadingScoreToServer(readingSpeed);
-  }, []);
+  }, [readingSpeed, sendReadingScoreToServer]);
 
   return (
     <ResultsPage readingSpeed={readingSpeed} />
