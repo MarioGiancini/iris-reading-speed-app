@@ -1,5 +1,5 @@
 {
   "redirects": [
-    { "source": "/admin", "destination": "/" }
+    { "source": "/*", "destination": "/*" }
   ]
 }
