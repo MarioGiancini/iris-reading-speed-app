@@ -8,7 +8,7 @@ import { store, history } from 'store';
 
 import 'styles/index.scss';
 
-import { Application } from './Application.Container';
+import { Application } from './Application';
 
 FocusStyleManager.onlyShowFocusOnTabs();
 

@@ -37,13 +37,13 @@ const ReadingSpeedChart = ({ readingSpeed }) => {
 
     const positionPercent = getReadingSpeedPointerPosition(readingSpeed);
     setPosition((width / 100) * positionPercent);
-  });
+  }, [readingSpeed]);
 
   React.useEffect(() => {
     setTimeout(() => {
       setAnimatedValue(readingSpeed);
     }, 500);
-  }, []);
+  }, [readingSpeed]);
 
   return (
     <Container ref={container}>
@@ -146,4 +146,5 @@ ReadingSpeedChart.propTypes = {
   readingSpeed: PropTypes.number.isRequired,
 };
 
-export { ReadingSpeedChart };
+const ReadingSpeedChartMemoized = React.memo(ReadingSpeedChart);
+export { ReadingSpeedChartMemoized as ReadingSpeedChart };

@@ -1,19 +1,21 @@
 import styled from 'styled-components';
-import { Card, Button } from '@blueprintjs/core';
-import { ELEVATION_4 } from '@blueprintjs/core/lib/esm/common/classes';
-
-import BackgroundPattern from './images/background-pattern.png';
+import { Card, Button, Classes } from '@blueprintjs/core';
 
 const Container = styled.div`
-  position: relative;
-  width: 100vw;
-  height: 100vh;
-  background-image: url(${BackgroundPattern});
-  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  height: 100%;
+  padding: 50px;
+
+  @media screen and (max-width: 414px) {
+    padding: 20px;
+  }
 `;
 
 const ControlContainer = styled(Card).attrs({
-  elevation: ELEVATION_4,
+  elevation: Classes.ELEVATION_4,
 })`
   display: flex;
   flex-direction: column;
@@ -60,7 +62,9 @@ const ButtonBase = styled(Button)`
 
 const StartTestButton = styled(ButtonBase)``;
 
-const FinishTestButton = styled(ButtonBase)`
+const FinishTestButton = styled(ButtonBase).attrs({
+  large: true,
+})`
   margin-top: 30px;
 
   @media screen and (max-width: 414px) {

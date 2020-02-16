@@ -23,9 +23,20 @@ const WordsPerMinuteDescription = styled.p`
   text-align: center;
 `;
 
+const SocialShareButtons = styled.div`
+  margin: 20px;
+  margin-right: 0;
+  align-self: flex-end;
+
+  button {
+    margin-left: 10px;
+  }
+`;
+
 export {
   Container,
   Heading,
   WordsPerMinuteNumber,
   WordsPerMinuteDescription,
+  SocialShareButtons,
 };

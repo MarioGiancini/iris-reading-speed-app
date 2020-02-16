@@ -32,7 +32,8 @@
   },
   "plugins": [
     "react",
-    "jsx-a11y"
+    "jsx-a11y",
+    "react-hooks"
   ],
   "rules": {
     "react/jsx-filename-extension": [
@@ -61,6 +62,7 @@
       "error",
       "all"
     ],
+    "func-names": "off",
     "arrow-parens": "off",
     "object-curly-newline": "off",
     "react/require-default-props": "off",
@@ -95,6 +97,8 @@
     ],
     "react/no-did-update-set-state": "off",
     "linebreak-style": "off",
-    "import/prefer-default-export": "off"
+    "import/prefer-default-export": "off",
+    "react-hooks/rules-of-hooks": "error",
+    "react-hooks/exhaustive-deps": "warn"
   }
 }
