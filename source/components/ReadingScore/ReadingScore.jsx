@@ -34,7 +34,7 @@ const ReadingScore = ({ readingSpeed }) => {
     setTimeout(() => {
       setAnimatedValue(readingSpeed);
     }, 500);
-  }, []);
+  }, [readingSpeed]);
 
   return (
     <Container>

@@ -1,6 +1,19 @@
 import styled from 'styled-components';
 import { Card, Button, Classes } from '@blueprintjs/core';
 
+const Container = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  height: 100%;
+  padding: 50px;
+
+  @media screen and (max-width: 414px) {
+    padding: 20px;
+  }
+`;
+
 const ControlContainer = styled(Card).attrs({
   elevation: Classes.ELEVATION_4,
 })`
@@ -49,7 +62,9 @@ const ButtonBase = styled(Button)`
 
 const StartTestButton = styled(ButtonBase)``;
 
-const FinishTestButton = styled(ButtonBase)`
+const FinishTestButton = styled(ButtonBase).attrs({
+  large: true,
+})`
   margin-top: 30px;
 
   @media screen and (max-width: 414px) {
@@ -58,6 +73,7 @@ const FinishTestButton = styled(ButtonBase)`
 `;
 
 export {
+  Container,
   ControlContainer,
   IntroText,
   IntroTextHeading,

@@ -8,7 +8,7 @@ import { AdminPage } from './AdminPage';
 const AdminPageContainer = ({ results, signout, fetchResultsList }) => {
   React.useEffect(() => {
     fetchResultsList();
-  }, []);
+  }, [fetchResultsList]);
 
   return (
     <AdminPage results={results} onSignout={signout} />

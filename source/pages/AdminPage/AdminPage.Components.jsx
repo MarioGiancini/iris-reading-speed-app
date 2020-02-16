@@ -3,9 +3,6 @@ import styled from 'styled-components';
 import { HTMLTable, Classes } from '@blueprintjs/core';
 
 const Container = styled.div`
-  position: fixed;
-  top: 0;
-  left: 0;
   width: 100vw;
   height: 100vh;
 `;
@@ -24,6 +21,7 @@ const Table = styled(HTMLTable).attrs({
   width: 100%;
   border-radius: 3px;
   background-color: white;
+  table-layout: fixed;
 `;
 
 export {
