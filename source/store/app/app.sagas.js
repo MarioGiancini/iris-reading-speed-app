@@ -13,10 +13,21 @@ const getReadingSpeed = (startTime, finishTime, wordsCount) => {
 };
 
 const getCurrentPosition = () => (
-  new Promise((resolve) => {
-    navigator.geolocation.getCurrentPosition((position) => {
-      resolve(position.coords);
-    });
+  new Promise((resolve, reject) => {
+    const options = {
+      timeout: 10000,
+      enableHighAccuracy: true,
+    };
+
+    navigator.geolocation.getCurrentPosition(
+      (position) => {
+        resolve(position.coords);
+      },
+      (error) => {
+        reject(new Error(error.message));
+      },
+      options,
+    );
   })
 );
 
@@ -36,9 +47,14 @@ const sendReadingScoreServerSaga = function* ({ payload: score }) {
   const createdResults = yield call(api.sendResults, score);
 
   if (navigator.geolocation) {
-    const { latitude, longitude } = yield call(getCurrentPosition);
-    const location = new firebase.firestore.GeoPoint(latitude, longitude);
-    yield call(api.setResultsLocation(createdResults, location));
+    try {
+      const { latitude, longitude } = yield call(getCurrentPosition);
+      const location = new firebase.firestore.GeoPoint(latitude, longitude);
+      yield call(api.setResultsLocation, createdResults, location);
+    } catch (error) {
+      // eslint-disable-next-line no-console
+      console.error('Error getting current geolocation. Message: ', error.message);
+    }
   }
 };
 
