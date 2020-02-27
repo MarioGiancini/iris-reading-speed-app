@@ -123,7 +123,7 @@ module.exports = {
       title: 'IrisReading Reading Speed Application',
       template: './source/templates/index.html',
     }),
-    new FaviconsWebpackPlugin('./source/favicon.svg'),
+    new FaviconsWebpackPlugin('./source/images/favicon.svg'),
     new MiniCssExtractPlugin({
       filename: 'static/[hash].bundle.css',
     }),
