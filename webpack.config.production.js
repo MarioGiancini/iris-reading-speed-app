@@ -3,6 +3,7 @@ const webpack = require('webpack');
 
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
+const FaviconsWebpackPlugin = require('favicons-webpack-plugin');
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 
 module.exports = {
@@ -122,6 +123,7 @@ module.exports = {
       title: 'IrisReading Reading Speed Application',
       template: './source/templates/index.html',
     }),
+    new FaviconsWebpackPlugin('./source/favicon.svg'),
     new MiniCssExtractPlugin({
       filename: 'static/[hash].bundle.css',
     }),
