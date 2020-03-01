@@ -12,9 +12,7 @@ const Container = styled.div`
   }
 `;
 
-const Content = styled.div`
-  padding: 20px;
-`;
+const Content = styled.div``;
 
 export {
   Content,

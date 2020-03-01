@@ -1,12 +1,19 @@
 import React from 'react';
-import types from 'prop-types'
+import types from 'prop-types';
 import styled from 'styled-components';
-import { Link as LinkBase } from 'react-router-dom';
+import { NavLink as NavLinkBase } from 'react-router-dom';
 import { Button } from '@blueprintjs/core';
 
-const Link = styled(LinkBase)`
+const Link = styled(NavLinkBase)`
+  margin-right: 5px;
+  border-radius: 3px;
+
   &:hover {
     text-decoration: none;
+  }
+
+  &.active {
+    background: rgba(115, 134, 148, 0.3);
   }
 `;
 

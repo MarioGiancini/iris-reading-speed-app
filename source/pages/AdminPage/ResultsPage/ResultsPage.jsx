@@ -5,7 +5,11 @@ import { Button, Intent } from '@blueprintjs/core';
 
 import { ResultsMap } from 'Types/Results';
 
-import { Table } from './ResultsPage.Components';
+import {
+  Table,
+  Container,
+  ActionPanel,
+} from './ResultsPage.Components';
 
 const ResultsPage = ({
   results,
@@ -16,33 +20,47 @@ const ResultsPage = ({
   }, [onDeleteResult]);
 
   return (
-    <Table>
-      <thead>
-        <tr>
-          <th>Reading speed (words per minute)</th>
-          <th>Date</th>
-          <th>Actions</th>
-        </tr>
-      </thead>
+    <Container>
+      <ActionPanel>
+        actions
+      </ActionPanel>
 
-      <tbody>
-        {r.values(results).map((resultEntry) => (
-          <tr key={resultEntry.id}>
-            <td>{resultEntry.value}</td>
-            <td>{resultEntry.date.toLocaleDateString()} {resultEntry.date.toLocaleTimeString()}</td>
-            <td>
-              <Button
-                minimal
-                icon="trash"
-                intent={Intent.DANGER}
-                loading={resultEntry.isDeleting}
-                onClick={handleDeleteButtonClick(resultEntry)}
-              />
-            </td>
+      <Table>
+        <thead>
+          <tr>
+            <th>Reading speed (words per minute)</th>
+            <th>Date</th>
+            <th style={{ width: 100 }}>
+              Actions
+            </th>
           </tr>
-        ))}
-      </tbody>
-    </Table>
+        </thead>
+
+        <tbody>
+          {r.values(results).map((resultEntry) => (
+            <tr key={resultEntry.id}>
+              <Table.Cell>
+                {resultEntry.value}
+              </Table.Cell>
+
+              <Table.Cell>
+                {resultEntry.date.toLocaleDateString()} {resultEntry.date.toLocaleTimeString()}
+              </Table.Cell>
+
+              <Table.Cell style={{ textAlign: 'center' }}>
+                <Button
+                  minimal
+                  icon="trash"
+                  intent={Intent.DANGER}
+                  loading={resultEntry.isDeleting}
+                  onClick={handleDeleteButtonClick(resultEntry)}
+                />
+              </Table.Cell>
+            </tr>
+          ))}
+        </tbody>
+      </Table>
+    </Container>
   );
 };
 
