@@ -1,7 +1,8 @@
 {
   "rewrites": [
+    { "source": "/admin", "destination": "/" },
     { "source": "/admin/(.*)", "destination": "/" },
     { "source": "/signin", "destination": "/" },
-    { "source": "/results/:score", "destination": "/" }
+    { "source": "/results/(.*)", "destination": "/" }
   ]
 }
