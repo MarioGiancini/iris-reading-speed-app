@@ -10,7 +10,8 @@ const Container = styled.div`
   padding: 50px;
 
   @media screen and (max-width: 414px) {
-    padding: 20px;
+    padding: 0;
+    padding-bottom: 20px;
   }
 `;
 
@@ -20,12 +21,20 @@ const ControlContainer = styled(Card).attrs({
   display: flex;
   flex-direction: column;
   justify-content: center;
-  position: absolute;
+  position: fixed;
   top: 50%;
   left: 50%;
   width: 400px;
   padding: 30px 20px;
   transform: translate(-50%, -50%);
+
+  @media screen and (max-width: 414px) {
+    top: 50%;
+    left: 0;
+    width: 100vw;
+    transform: translateY(-50%);
+    border-radius: 0;
+  }
 `;
 
 const IntroText = styled.div`
