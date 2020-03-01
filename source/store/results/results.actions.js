@@ -1,5 +1,9 @@
 import { createActionWithStatuses } from 'utilities/store';
 
-const fetchResultsList = createActionWithStatuses('[results] fetch results list');
+const fetchResults = createActionWithStatuses('[results] fetch results');
+const deleteResultEntry = createActionWithStatuses('[results] delete result entry');
 
-export { fetchResultsList };
+export {
+  fetchResults,
+  deleteResultEntry,
+};

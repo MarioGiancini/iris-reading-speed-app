@@ -1,22 +1,22 @@
 import React from 'react';
-import PropTypes from 'prop-types';
+import types from 'prop-types';
 import { connect } from 'react-redux';
 
 import { actions } from 'store';
 
 import { SigninPage } from './SigninPage';
 
-const SigninPageContainer = ({ signin }) => (
+const SigninPageContainerBase = ({ signin }) => (
   <SigninPage onSignin={signin} />
 );
 
-SigninPageContainer.propTypes = {
-  signin: PropTypes.func,
+SigninPageContainerBase.propTypes = {
+  signin: types.func.isRequired,
 };
 
-const ConnectedSigninPageContainer = connect(
+const SigninPageContainer = connect(
   null,
   { ...actions.auth },
-)(SigninPageContainer);
+)(SigninPageContainerBase);
 
-export { ConnectedSigninPageContainer as SigninPageContainer };
+export { SigninPageContainer as SigninPage };

@@ -1,17 +1,31 @@
 import React from 'react';
-import PropTypes from 'prop-types';
+import types from 'prop-types';
+import { Route } from 'react-router-dom';
 import { Button, Navbar, Alignment } from '@blueprintjs/core';
 
-import { ResultList } from 'Models/Results';
+import { ResultsPage } from './ResultsPage/ResultsPage.Container';
 
-import { LocationLink } from 'Components';
-import { Container, Content, Table } from './AdminPage.Components';
+import { NavbarLink } from './NavbarLink/NavbarLink';
 
-const AdminPage = ({ results, onSignout }) => (
+import {
+  Content,
+  Container,
+} from './AdminPage.Components';
+
+const AdminPage = ({ onSignout }) => (
   <Container>
     <Navbar>
       <Navbar.Group align={Alignment.LEFT}>
         <Navbar.Heading>Administration</Navbar.Heading>
+        <Navbar.Divider />
+
+        <NavbarLink route="/admin/results" icon="th-filtered">
+          Results
+        </NavbarLink>
+
+        <NavbarLink route="/admin/articles" icon="draw">
+          Articles
+        </NavbarLink>
       </Navbar.Group>
 
       <Navbar.Group align={Alignment.RIGHT}>
@@ -20,36 +34,13 @@ const AdminPage = ({ results, onSignout }) => (
     </Navbar>
 
     <Content>
-      <Table>
-        <thead>
-          <tr>
-            <th>Reading speed (words per minute)</th>
-            <th>Date</th>
-            <th>Location</th>
-          </tr>
-        </thead>
-
-        <tbody>
-          {results.map((result, index) => (
-            <tr key={index}>
-              <td>{result.value}</td>
-              <td>{result.date.toLocaleDateString()} {result.date.toLocaleTimeString()}</td>
-              <td>
-                {result.location && (
-                  <LocationLink location={result.location} />
-                )}
-              </td>
-            </tr>
-          ))}
-        </tbody>
-      </Table>
+      <Route path="/admin/results" component={ResultsPage} />
     </Content>
   </Container>
 );
 
 AdminPage.propTypes = {
-  results: ResultList.isRequired,
-  onSignout: PropTypes.func.isRequired,
+  onSignout: types.func.isRequired,
 };
 
 export { AdminPage };

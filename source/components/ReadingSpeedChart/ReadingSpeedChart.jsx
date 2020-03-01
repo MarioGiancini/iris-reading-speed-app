@@ -1,5 +1,5 @@
 import React from 'react';
-import PropTypes from 'prop-types';
+import types from 'prop-types';
 import AnimatedNumber from 'react-animated-number';
 import { ResponsiveContainer, AreaChart, Area, XAxis, CartesianGrid } from 'recharts';
 
@@ -143,7 +143,7 @@ const ReadingSpeedChart = ({ readingSpeed }) => {
 };
 
 ReadingSpeedChart.propTypes = {
-  readingSpeed: PropTypes.number.isRequired,
+  readingSpeed: types.number.isRequired,
 };
 
 const ReadingSpeedChartMemoized = React.memo(ReadingSpeedChart);

@@ -1,5 +1,5 @@
 import React from 'react';
-import PropTypes from 'prop-types';
+import types from 'prop-types';
 import { Container } from './Article.Components';
 
 const Article = ({ disabled, children }) => (
@@ -9,8 +9,8 @@ const Article = ({ disabled, children }) => (
 );
 
 Article.propTypes = {
-  disabled: PropTypes.bool,
-  children: PropTypes.any,
+  disabled: types.bool,
+  children: types.any,
 };
 
 Article.defaultProps = {

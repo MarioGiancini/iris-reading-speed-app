@@ -1,5 +1,5 @@
 import React from 'react';
-import PropTypes from 'prop-types';
+import types from 'prop-types';
 import { Intent } from '@blueprintjs/core';
 
 import { getRandomArticle } from 'articles';
@@ -76,10 +76,10 @@ const TestPage = ({
 };
 
 TestPage.propTypes = {
-  isTestStarted: PropTypes.bool,
-  isTestFinished: PropTypes.bool,
-  onTestStart: PropTypes.func.isRequired,
-  onTestFinish: PropTypes.func.isRequired,
+  isTestStarted: types.bool,
+  isTestFinished: types.bool,
+  onTestStart: types.func.isRequired,
+  onTestFinish: types.func.isRequired,
 };
 
 TestPage.defaultProps = {

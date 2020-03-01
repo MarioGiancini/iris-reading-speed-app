@@ -1,12 +1,12 @@
 import React from 'react';
-import PropTypes from 'prop-types';
+import types from 'prop-types';
 import { connect } from 'react-redux';
 
 import { actions } from 'store';
 
 import { TestPage } from './TestPage';
 
-const TestPageContainer = ({
+const TestPageContainerBase = ({
   isTestStarted,
   isTestFinished,
   startReadingTest,
@@ -20,14 +20,14 @@ const TestPageContainer = ({
   />
 );
 
-TestPageContainer.propTypes = {
-  isTestStarted: PropTypes.bool,
-  isTestFinished: PropTypes.bool,
-  startReadingTest: PropTypes.func,
-  finishReadingTest: PropTypes.func,
+TestPageContainerBase.propTypes = {
+  isTestStarted: types.bool,
+  isTestFinished: types.bool,
+  startReadingTest: types.func,
+  finishReadingTest: types.func,
 };
 
-TestPageContainer.defaultProps = {
+TestPageContainerBase.defaultProps = {
   isTestStarted: false,
   isTestFinished: false,
 };
@@ -37,9 +37,9 @@ const mapStateToProps = ({ app }) => ({
   isTestFinished: Boolean(app.startTime && app.finishTime),
 });
 
-const TestPageContainerConnected = connect(
+const TestPageContainer = connect(
   mapStateToProps,
   { ...actions.app },
-)(TestPageContainer);
+)(TestPageContainerBase);
 
-export { TestPageContainerConnected as TestPageContainer };
+export { TestPageContainer as TestPage };

@@ -1,5 +1,5 @@
 import React from 'react';
-import PropTypes from 'prop-types';
+import types from 'prop-types';
 import { FormGroup, InputGroup } from '@blueprintjs/core';
 
 import { Container, SubmitButton } from './SigninPage.Components';
@@ -46,7 +46,7 @@ const SigninPage = ({ onSignin }) => {
 };
 
 SigninPage.propTypes = {
-  onSignin: PropTypes.func.isRequired,
+  onSignin: types.func.isRequired,
 };
 
 export { SigninPage };

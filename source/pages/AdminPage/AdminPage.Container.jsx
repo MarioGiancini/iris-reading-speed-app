@@ -1,27 +1,28 @@
 import React from 'react';
+import types from 'prop-types';
 import { connect } from 'react-redux';
 
 import { actions } from 'store';
 
 import { AdminPage } from './AdminPage';
 
-const AdminPageContainer = ({ results, signout, fetchResultsList }) => {
-  React.useEffect(() => {
-    fetchResultsList();
-  }, [fetchResultsList]);
+const AdminPageContainerBase = ({
+  signout,
+}) => (
+  <AdminPage onSignout={signout} />
+);
 
-  return (
-    <AdminPage results={results} onSignout={signout} />
-  );
+AdminPageContainerBase.propTypes = {
+  signout: types.func.isRequired,
 };
 
 const mapStateToProps = ({ results }) => ({
-  results: results.list,
+  results: results.results,
 });
 
-const ConnectedAdminPageContainer = connect(
+const AdminPageContainer = connect(
   mapStateToProps,
-  { ...actions.auth, ...actions.results },
-)(AdminPageContainer);
+  { ...actions.auth },
+)(AdminPageContainerBase);
 
-export { ConnectedAdminPageContainer as AdminPageContainer };
+export { AdminPageContainer as AdminPage };

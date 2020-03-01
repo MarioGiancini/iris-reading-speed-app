@@ -98,13 +98,12 @@ module.exports = {
     descriptionFiles: ['package.json'],
     alias: {
       Pages: path.resolve(__dirname, 'source/pages'),
-      Models: path.resolve(__dirname, 'source/models'),
+      Types: path.resolve(__dirname, 'source/types'),
       Components: path.resolve(__dirname, 'source/components'),
 
       api: path.resolve(__dirname, 'source/api'),
       store: path.resolve(__dirname, 'source/store'),
       styles: path.resolve(__dirname, 'source/styles'),
-      models: path.resolve(__dirname, 'source/models'),
       images: path.resolve(__dirname, 'source/images'),
       articles: path.resolve(__dirname, 'source/articles'),
       utilities: path.resolve(__dirname, 'source/utilities'),

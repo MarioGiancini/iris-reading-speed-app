@@ -9,11 +9,7 @@ const sendResults = (readingSpeed) => (
   })
 );
 
-const setResultsLocation = (results, location) => (
-  results.update({ location })
-);
-
-const fetchResultsList = async () => {
+const fetchResults = async () => {
   const result = [];
   const response = await database
     .collection('results')
@@ -23,21 +19,22 @@ const fetchResultsList = async () => {
   response.forEach(entry => {
     const data = entry.data();
 
-    const { location } = data;
-    const { latitude, longitude } = location || {};
-
     result.push({
+      id: entry.id,
       value: data.readingSpeed,
       date: new Date(data.timestamp.seconds * 1000),
-      location: data.location && { latitude, longitude },
     });
   });
 
   return result;
 };
 
+const deleteResult = async (id) => {
+  await database.collection('results').doc(id).delete();
+};
+
 export {
   sendResults,
-  setResultsLocation,
-  fetchResultsList,
+  fetchResults,
+  deleteResult,
 };

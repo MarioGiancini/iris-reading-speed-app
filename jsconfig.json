@@ -34,11 +34,11 @@
       "utilities/*": [
         "./source/utilities/*"
       ],
-      "Models": [
-        "./source/models/index"
+      "Types": [
+        "./source/types/index"
       ],
-      "Models/*": [
-        "./source/models/*"
+      "Types/*": [
+        "./source/types/*"
       ],
       "Constants": [
         "./source/constants/index"
