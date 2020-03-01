@@ -1,5 +1,5 @@
 import React from 'react';
-import PropTypes from 'prop-types';
+import types from 'prop-types';
 
 import { ReadingScore } from 'Components';
 import { Container } from './ResultsPage.Components';
@@ -11,7 +11,7 @@ const ResultsPage = ({ readingSpeed }) => (
 );
 
 ResultsPage.propTypes = {
-  readingSpeed: PropTypes.number.isRequired,
+  readingSpeed: types.number.isRequired,
 };
 
 export { ResultsPage };

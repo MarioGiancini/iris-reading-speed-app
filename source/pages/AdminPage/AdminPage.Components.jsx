@@ -2,9 +2,16 @@ import cs from 'classnames';
 import styled from 'styled-components';
 import { HTMLTable, Classes } from '@blueprintjs/core';
 
+import BackgroundPattern from 'images/adminpage-background-pattern.png';
+
 const Container = styled.div`
   width: 100vw;
   height: 100vh;
+  background-image: url(${BackgroundPattern});
+
+  * {
+    font-family: Rubik;
+  }
 `;
 
 const Content = styled.div`
@@ -18,10 +25,16 @@ const Table = styled(HTMLTable).attrs({
     Classes.ELEVATION_2,
   ),
 })`
-  width: 100%;
-  border-radius: 3px;
-  background-color: white;
-  table-layout: fixed;
+  && {
+    width: 100%;
+    border-radius: 3px;
+    background-color: white;
+    table-layout: fixed;
+
+    th {
+      font-weight: 500;
+    }
+  }
 `;
 
 export {

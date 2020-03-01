@@ -1,5 +1,5 @@
 import React from 'react';
-import PropTypes from 'prop-types';
+import types from 'prop-types';
 import { connect } from 'react-redux';
 
 import { actions } from 'store';
@@ -11,7 +11,7 @@ const SigninPageContainer = ({ signin }) => (
 );
 
 SigninPageContainer.propTypes = {
-  signin: PropTypes.func,
+  signin: types.func,
 };
 
 const ConnectedSigninPageContainer = connect(

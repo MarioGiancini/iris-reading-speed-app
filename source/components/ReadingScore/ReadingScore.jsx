@@ -1,5 +1,5 @@
 import React from 'react';
-import PropTypes from 'prop-types';
+import types from 'prop-types';
 import AnimatedNumber from 'react-animated-number';
 
 import {
@@ -84,7 +84,7 @@ const ReadingScore = ({ readingSpeed }) => {
 };
 
 ReadingScore.propTypes = {
-  readingSpeed: PropTypes.number.isRequired,
+  readingSpeed: types.number.isRequired,
 };
 
 export { ReadingScore };

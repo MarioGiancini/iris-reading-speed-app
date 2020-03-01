@@ -10,6 +10,9 @@ const ResultsPageContainer = ({ match, sendReadingScoreToServer }) => {
   const readingSpeed = Number(readingSpeedString);
 
   React.useEffect(() => {
+    // TODO:
+    // don't send results on page load
+    // becaues this will cause fake results when sharing
     sendReadingScoreToServer(readingSpeed);
   }, [readingSpeed, sendReadingScoreToServer]);
 

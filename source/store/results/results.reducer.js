@@ -1,27 +1,45 @@
+import * as r from 'ramda';
 import { createReducer } from 'redux-act';
 
 import * as actions from './results.actions';
 
 const initialState = {
-  list: [],
-  fetchResultListRequestStatus: '',
+  results: {},
+  fetchResultsRequestStatus: '',
+  deleteResultEntryRequestStatus: '',
 };
 
 const reducer = {
-  [actions.fetchResultsList.start]: state => ({
+  [actions.fetchResults.start]: state => ({
     ...state,
-    fetchResultListRequestStatus: 'pending',
+    fetchResultsRequestStatus: 'pending',
   }),
 
-  [actions.fetchResultsList.success]: (state, results) => ({
+  [actions.fetchResults.success]: (state, results) => ({
     ...state,
-    list: results,
-    fetchResultListRequestStatus: 'success',
+    results,
+    fetchResultsRequestStatus: 'success',
   }),
 
-  [actions.fetchResultsList.failure]: state => ({
+  [actions.fetchResults.failure]: state => ({
     ...state,
-    fetchResultListRequestStatus: 'failure',
+    fetchResultsRequestStatus: 'failure',
+  }),
+
+  [actions.deleteResultEntry.start]: (state, { id }) => ({
+    ...state,
+    results: r.assocPath([id, 'isDeleting'], true, state.results),
+    deleteResultEntryRequestStatus: 'pending',
+  }),
+
+  [actions.deleteResultEntry.success]: (state, { id }) => ({
+    ...state,
+    results: r.omit([id], state.results),
+  }),
+
+  [actions.deleteResultEntry.failure]: state => ({
+    ...state,
+    deleteResultEntryRequestStatus: 'failure',
   }),
 };
 

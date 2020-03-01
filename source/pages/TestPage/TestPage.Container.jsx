@@ -1,5 +1,5 @@
 import React from 'react';
-import PropTypes from 'prop-types';
+import types from 'prop-types';
 import { connect } from 'react-redux';
 
 import { actions } from 'store';
@@ -21,10 +21,10 @@ const TestPageContainer = ({
 );
 
 TestPageContainer.propTypes = {
-  isTestStarted: PropTypes.bool,
-  isTestFinished: PropTypes.bool,
-  startReadingTest: PropTypes.func,
-  finishReadingTest: PropTypes.func,
+  isTestStarted: types.bool,
+  isTestFinished: types.bool,
+  startReadingTest: types.func,
+  finishReadingTest: types.func,
 };
 
 TestPageContainer.defaultProps = {

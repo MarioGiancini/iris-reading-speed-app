@@ -1,55 +1,69 @@
 import React from 'react';
-import PropTypes from 'prop-types';
+import types from 'prop-types';
+import * as r from 'ramda';
 import { Button, Navbar, Alignment } from '@blueprintjs/core';
 
-import { ResultList } from 'Models/Results';
+import { ResultsMap } from 'Types/Results';
 
-import { LocationLink } from 'Components';
 import { Container, Content, Table } from './AdminPage.Components';
 
-const AdminPage = ({ results, onSignout }) => (
-  <Container>
-    <Navbar>
-      <Navbar.Group align={Alignment.LEFT}>
-        <Navbar.Heading>Administration</Navbar.Heading>
-      </Navbar.Group>
+const AdminPage = ({
+  results,
+  onSignout,
+  onDeleteResult,
+}) => {
+  const handleDeleteButtonClick = React.useCallback(result => () => {
+    onDeleteResult(result);
+  }, [onDeleteResult]);
 
-      <Navbar.Group align={Alignment.RIGHT}>
-        <Button onClick={onSignout}>Sign out</Button>
-      </Navbar.Group>
-    </Navbar>
+  return (
+    <Container>
+      <Navbar>
+        <Navbar.Group align={Alignment.LEFT}>
+          <Navbar.Heading>Administration</Navbar.Heading>
+        </Navbar.Group>
 
-    <Content>
-      <Table>
-        <thead>
-          <tr>
-            <th>Reading speed (words per minute)</th>
-            <th>Date</th>
-            <th>Location</th>
-          </tr>
-        </thead>
+        <Navbar.Group align={Alignment.RIGHT}>
+          <Button onClick={onSignout}>Sign out</Button>
+        </Navbar.Group>
+      </Navbar>
 
-        <tbody>
-          {results.map((result, index) => (
-            <tr key={index}>
-              <td>{result.value}</td>
-              <td>{result.date.toLocaleDateString()} {result.date.toLocaleTimeString()}</td>
-              <td>
-                {result.location && (
-                  <LocationLink location={result.location} />
-                )}
-              </td>
+      <Content>
+        <Table>
+          <thead>
+            <tr>
+              <th>Reading speed (words per minute)</th>
+              <th>Date</th>
+              <th>Actions</th>
             </tr>
-          ))}
-        </tbody>
-      </Table>
-    </Content>
-  </Container>
-);
+          </thead>
+
+          <tbody>
+            {r.values(results).map((resultEntry) => (
+              <tr key={resultEntry.id}>
+                <td>{resultEntry.value}</td>
+                <td>{resultEntry.date.toLocaleDateString()} {resultEntry.date.toLocaleTimeString()}</td>
+                <td>
+                  <Button
+                    minimal
+                    icon="trash"
+                    loading={resultEntry.isDeleting}
+                    onClick={handleDeleteButtonClick(resultEntry)}
+                  />
+                </td>
+              </tr>
+            ))}
+          </tbody>
+        </Table>
+      </Content>
+    </Container>
+  );
+};
 
 AdminPage.propTypes = {
-  results: ResultList.isRequired,
-  onSignout: PropTypes.func.isRequired,
+  results: ResultsMap.isRequired,
+  onSignout: types.func.isRequired,
+  onDeleteResult: types.func.isRequired,
 };
 
 export { AdminPage };
