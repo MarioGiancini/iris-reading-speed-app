@@ -11,6 +11,10 @@ const getReadingSpeed = (startTime, finishTime, wordsCount) => {
   return Math.round(wordsCount / timeInMinutes);
 };
 
+const sendReadingScoreToServer = function* (score) {
+  yield call(api.sendResults, score);
+};
+
 const finishReadingTestSaga = function* ({ payload }) {
   yield put(actions.finishReadingTest.success());
 
@@ -21,15 +25,11 @@ const finishReadingTestSaga = function* ({ payload }) {
   const readingSpeed = getReadingSpeed(startTime, finishTime, wordsCount);
 
   yield put(push(`/results/${readingSpeed}`));
-};
-
-const sendReadingScoreServerSaga = function* ({ payload: score }) {
-  yield call(api.sendResults, score);
+  yield call(sendReadingScoreToServer, readingSpeed);
 };
 
 const appSaga = function* () {
   yield takeEvery(actions.finishReadingTest, finishReadingTestSaga);
-  yield takeEvery(actions.sendReadingScoreToServer, sendReadingScoreServerSaga);
 };
 
 export { appSaga };

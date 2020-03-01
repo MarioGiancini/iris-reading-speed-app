@@ -2,16 +2,16 @@ import React from 'react';
 import types from 'prop-types';
 
 import { ReadingScore } from 'Components';
-import { Container } from './ResultsPage.Components';
+import { Container } from './ScorePage.Components';
 
-const ResultsPage = ({ readingSpeed }) => (
+const ScorePage = ({ readingSpeed }) => (
   <Container>
     <ReadingScore readingSpeed={readingSpeed} />
   </Container>
 );
 
-ResultsPage.propTypes = {
+ScorePage.propTypes = {
   readingSpeed: types.number.isRequired,
 };
 
-export { ResultsPage };
+export { ScorePage };

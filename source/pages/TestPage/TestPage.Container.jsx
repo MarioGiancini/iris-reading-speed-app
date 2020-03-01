@@ -6,7 +6,7 @@ import { actions } from 'store';
 
 import { TestPage } from './TestPage';
 
-const TestPageContainer = ({
+const TestPageContainerBase = ({
   isTestStarted,
   isTestFinished,
   startReadingTest,
@@ -20,14 +20,14 @@ const TestPageContainer = ({
   />
 );
 
-TestPageContainer.propTypes = {
+TestPageContainerBase.propTypes = {
   isTestStarted: types.bool,
   isTestFinished: types.bool,
   startReadingTest: types.func,
   finishReadingTest: types.func,
 };
 
-TestPageContainer.defaultProps = {
+TestPageContainerBase.defaultProps = {
   isTestStarted: false,
   isTestFinished: false,
 };
@@ -37,9 +37,9 @@ const mapStateToProps = ({ app }) => ({
   isTestFinished: Boolean(app.startTime && app.finishTime),
 });
 
-const TestPageContainerConnected = connect(
+const TestPageContainer = connect(
   mapStateToProps,
   { ...actions.app },
-)(TestPageContainer);
+)(TestPageContainerBase);
 
-export { TestPageContainerConnected as TestPageContainer };
+export { TestPageContainer as TestPage };

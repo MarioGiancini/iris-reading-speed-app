@@ -1,7 +1,7 @@
 import React from 'react';
 import types from 'prop-types';
 import * as r from 'ramda';
-import { Button, Navbar, Alignment } from '@blueprintjs/core';
+import { Button, Navbar, Alignment, Intent } from '@blueprintjs/core';
 
 import { ResultsMap } from 'Types/Results';
 
@@ -47,6 +47,7 @@ const AdminPage = ({
                   <Button
                     minimal
                     icon="trash"
+                    intent={Intent.DANGER}
                     loading={resultEntry.isDeleting}
                     onClick={handleDeleteButtonClick(resultEntry)}
                   />

@@ -45,4 +45,4 @@ const AdminPageContainer = connect(
   },
 )(AdminPageContainerBase);
 
-export { AdminPageContainer };
+export { AdminPageContainer as AdminPage };

@@ -6,17 +6,17 @@ import { actions } from 'store';
 
 import { SigninPage } from './SigninPage';
 
-const SigninPageContainer = ({ signin }) => (
+const SigninPageContainerBase = ({ signin }) => (
   <SigninPage onSignin={signin} />
 );
 
-SigninPageContainer.propTypes = {
-  signin: types.func,
+SigninPageContainerBase.propTypes = {
+  signin: types.func.isRequired,
 };
 
-const ConnectedSigninPageContainer = connect(
+const SigninPageContainer = connect(
   null,
   { ...actions.auth },
-)(SigninPageContainer);
+)(SigninPageContainerBase);
 
-export { ConnectedSigninPageContainer as SigninPageContainer };
+export { SigninPageContainer as SigninPage };
