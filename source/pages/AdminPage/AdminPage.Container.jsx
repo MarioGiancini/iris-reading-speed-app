@@ -3,34 +3,17 @@ import types from 'prop-types';
 import { connect } from 'react-redux';
 
 import { actions } from 'store';
-import { ResultsMap } from 'Types/Results';
 
 import { AdminPage } from './AdminPage';
 
 const AdminPageContainerBase = ({
-  results,
   signout,
-  fetchResults,
-  deleteResultEntry,
-}) => {
-  React.useEffect(() => {
-    fetchResults();
-  }, [fetchResults]);
-
-  return (
-    <AdminPage
-      results={results}
-      onSignout={signout}
-      onDeleteResult={deleteResultEntry}
-    />
-  );
-};
+}) => (
+  <AdminPage onSignout={signout} />
+);
 
 AdminPageContainerBase.propTypes = {
-  results: ResultsMap.isRequired,
   signout: types.func.isRequired,
-  fetchResults: types.func.isRequired,
-  deleteResultEntry: types.func.isRequired,
 };
 
 const mapStateToProps = ({ results }) => ({
@@ -39,10 +22,7 @@ const mapStateToProps = ({ results }) => ({
 
 const AdminPageContainer = connect(
   mapStateToProps,
-  {
-    ...actions.auth,
-    ...actions.results,
-  },
+  { ...actions.auth },
 )(AdminPageContainerBase);
 
 export { AdminPageContainer as AdminPage };

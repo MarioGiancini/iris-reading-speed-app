@@ -1,70 +1,46 @@
 import React from 'react';
 import types from 'prop-types';
-import * as r from 'ramda';
-import { Button, Navbar, Alignment, Intent } from '@blueprintjs/core';
+import { Route } from 'react-router-dom';
+import { Button, Navbar, Alignment } from '@blueprintjs/core';
 
-import { ResultsMap } from 'Types/Results';
+import { ResultsPage } from './ResultsPage/ResultsPage.Container';
 
-import { Container, Content, Table } from './AdminPage.Components';
+import { NavbarLink } from './NavbarLink/NavbarLink';
 
-const AdminPage = ({
-  results,
-  onSignout,
-  onDeleteResult,
-}) => {
-  const handleDeleteButtonClick = React.useCallback(result => () => {
-    onDeleteResult(result);
-  }, [onDeleteResult]);
+import {
+  Content,
+  Container,
+} from './AdminPage.Components';
 
-  return (
-    <Container>
-      <Navbar>
-        <Navbar.Group align={Alignment.LEFT}>
-          <Navbar.Heading>Administration</Navbar.Heading>
-        </Navbar.Group>
+const AdminPage = ({ onSignout }) => (
+  <Container>
+    <Navbar>
+      <Navbar.Group align={Alignment.LEFT}>
+        <Navbar.Heading>Administration</Navbar.Heading>
+        <Navbar.Divider />
 
-        <Navbar.Group align={Alignment.RIGHT}>
-          <Button onClick={onSignout}>Sign out</Button>
-        </Navbar.Group>
-      </Navbar>
+        <NavbarLink route="/admin/results" icon="th-filtered">
+          Results
+        </NavbarLink>
 
-      <Content>
-        <Table>
-          <thead>
-            <tr>
-              <th>Reading speed (words per minute)</th>
-              <th>Date</th>
-              <th>Actions</th>
-            </tr>
-          </thead>
+        <NavbarLink route="/admin/articles" icon="draw">
+          Articles
+        </NavbarLink>
+      </Navbar.Group>
 
-          <tbody>
-            {r.values(results).map((resultEntry) => (
-              <tr key={resultEntry.id}>
-                <td>{resultEntry.value}</td>
-                <td>{resultEntry.date.toLocaleDateString()} {resultEntry.date.toLocaleTimeString()}</td>
-                <td>
-                  <Button
-                    minimal
-                    icon="trash"
-                    intent={Intent.DANGER}
-                    loading={resultEntry.isDeleting}
-                    onClick={handleDeleteButtonClick(resultEntry)}
-                  />
-                </td>
-              </tr>
-            ))}
-          </tbody>
-        </Table>
-      </Content>
-    </Container>
-  );
-};
+      <Navbar.Group align={Alignment.RIGHT}>
+        <Button onClick={onSignout}>Sign out</Button>
+      </Navbar.Group>
+    </Navbar>
+
+    <Content>
+      <Route path="/admin/results" component={ResultsPage} />
+    </Content>
+  </Container>
+);
 
 AdminPage.propTypes = {
-  results: ResultsMap.isRequired,
   onSignout: types.func.isRequired,
-  onDeleteResult: types.func.isRequired,
 };
 
 export { AdminPage };

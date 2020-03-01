@@ -12,7 +12,7 @@ const Application = () => (
       <Route path="/results/:readingSpeed" component={ScorePage} />
 
       <Route exact path="/signin" component={SigninPage} />
-      <Route exact path="/admin" component={AdminPage} />
+      <Route path="/admin" component={AdminPage} />
     </Switch>
   </Container>
 );
