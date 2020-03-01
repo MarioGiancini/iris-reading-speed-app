@@ -1,6 +1,6 @@
 {
   "rewrites": [
-    { "source": "/admin", "destination": "/" },
+    { "source": "/admin/:route", "destination": "/" },
     { "source": "/signin", "destination": "/" },
     { "source": "/results/:score", "destination": "/" }
   ]
