@@ -1,5 +1,7 @@
 {
   "rewrites": [
-    { "source": "/(.*)", "destination": "/$1" }
+    { "source": "/admin", "destination": "/" },
+    { "source": "/signin", "destination": "/" },
+    { "source": "/results/:score", "destination": "/" }
   ]
 }
