@@ -10,6 +10,10 @@ const Container = styled.div`
   height: 100vh;
   background-image: url(${BackgroundPattern});
   overflow: hidden;
+
+  @media screen and (max-width: 768px){
+    height: auto;
+  }
 `;
 
 const ControlContainer = styled(Card).attrs({
