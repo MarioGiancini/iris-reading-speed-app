@@ -34,6 +34,7 @@ const ReadingScore = ({ readingSpeed }) => {
     setTimeout(() => {
       setAnimatedValue(readingSpeed);
     }, 500);
+    window.parent.postMessage({ type: 'readingSpeed', value: readingSpeed }, '*');
   }, [readingSpeed]);
 
   return (
